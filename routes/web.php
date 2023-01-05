@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,7 +16,7 @@ use App\Http\Controllers\CategoryController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('admin.layout.master');
 });
 Route::prefix('categories')->group(function () {
     Route::get('/index', [CategoryController::class,'index'])->name('categories.index');
@@ -24,3 +26,12 @@ Route::prefix('categories')->group(function () {
     Route::put('/update/{id}', [CategoryController::class,'update'])->name('categories.update');
     Route::delete('/delete/{id}', [CategoryController::class,'delete'])->name('categories.delete');
 });
+Route::prefix('product')->group(function () {
+    Route::get('/index', [ProductController::class,'index'])->name('product.index');
+    Route::get('/create', [ProductController::class,'create'])->name('product.create');
+    Route::post('/store', [ProductController::class,'store'])->name('product.store');
+    Route::get('/edit/{id}', [ProductController::class,'edit'])->name('product.edit');
+    Route::put('/update/{id}', [ProductController::class,'update'])->name('product.update');
+    Route::delete('/delete/{id}', [ProductController::class,'delete'])->name('product.delete');
+});
+

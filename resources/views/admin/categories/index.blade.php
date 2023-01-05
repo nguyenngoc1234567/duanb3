@@ -30,18 +30,21 @@
 
         <thead>
             <tr>
-                <th colspan="2">id</th>
-                <th colspan="2">Tên sách</th>
+                <th >id</th>
+                <th >Tên thể loại </th>
+                <th >Tùy chỉnh </th>
             </tr>
         </thead>
         <tbody>
             @foreach ($Categories as $key => $category)
                 <tr>
-                    <th scope="row">{{ ++$key }}</th>
-                    <th scope="row">{{ $category->name }}</th>
+                    <th>{{ $key+1 }}</th>
+                    <th >{{ $category->name }}</th>
+                    {{-- <th scope="row">{{$key+1}}</th>
+            <td>{{ $team->name }}</td> --}}
 
 
-                    <td colspan="2">
+                    <td>
                         <form action="{{route('categories.delete',[$category->id])}}" method="post">
                             @method('DELETE')
                             @csrf
@@ -51,6 +54,8 @@
                         </form>
                     </td>
                 </tr>
+
+
             @endforeach
         </tbody>
     </table>
