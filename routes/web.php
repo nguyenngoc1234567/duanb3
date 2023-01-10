@@ -14,6 +14,10 @@ use App\Http\Controllers\ProductController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('dangkishop', function () {
+    return view('admin.login.dangki');
+});
+
 
 Route::get('/', function () {
     return view('admin.layout.master');

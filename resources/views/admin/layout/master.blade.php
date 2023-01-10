@@ -42,7 +42,9 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                @include('admin.includes.main')
+                {{-- @include('admin.includes.main') --}}
+@yield('content')
+
                 <!-- /.container-fluid -->
 
             </div>

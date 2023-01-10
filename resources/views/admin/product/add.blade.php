@@ -1,4 +1,6 @@
-<form action="{{route('product.store')}}" method ='post'>
+@extends('admin.layout.master')
+@section('content')
+<form action="{{route('product.store')}}" method ='post' enctype="multipart/form-data">
     @csrf
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
@@ -28,6 +30,13 @@
                     @endforeach
                 </select>
                   </div>
+                  <div class="form-group has-warning">
+                    <div class="col-12">
+                        <label class="form-label"> Ảnh </label>
+                        <input type="file" class="form-control" value="" name="image">
+                      </div>
+                </div>
+                  <div class="col-12">
 
              </form>
              <div class="col-12">
@@ -39,3 +48,32 @@
         </div>
      </div><!--end row-->
 </form>
+<script>
+    jQuery(document).ready(function() {
+        if ($('#blah').hide()) {
+            $('#blah').hide();
+        }
+        jQuery('#inputFile').change(function() {
+            $('#blah').show();
+            const file = jQuery(this)[0].files;
+            if (file[0]) {
+                jQuery('#blah').attr('src', URL.createObjectURL(file[0]));
+                jQuery('#blah1').attr('src', URL.createObjectURL(file[0]));
+            }
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.file').change(function(e) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $('#showImage').attr('src', e.target.result);
+                console.log(e);
+            }
+            reader.readAsDataURL(e.target.files['0']);
+        });
+    });
+</script>
+
+@endsection

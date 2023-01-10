@@ -1,4 +1,5 @@
-
+@extends('admin.layout.master')
+@section('content')
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
 integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 <form method="POST" action="{{route('product.update',[$product->id])}}" enctype= "multipart/form-data" >
@@ -33,6 +34,10 @@ integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WT
                 @endforeach
                 </select>
                </div>
+               <div class="col-12">
+                <label class="form-label"> Ảnh </label>
+                <input type="text" class="form-control" value="{{$product->image}}" name="image">
+              </div>
 
             <input type="submit" value="Submit">
 
@@ -43,5 +48,4 @@ integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WT
      </div>
 
 </form>
-
-
+@endsection
