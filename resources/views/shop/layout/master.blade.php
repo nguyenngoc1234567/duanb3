@@ -42,18 +42,8 @@
 
 
     <!-- Carousel Start -->
-    @include('shop.includes.main')
+@yield('content')
 
-    
-    <!-- Products End -->
-
-
-    <!-- Vendor Start -->
-
-    <!-- Vendor End -->
-
-
-    <!-- Footer Start -->
     @include('shop.includes.footer')
     <!-- Footer End -->
 

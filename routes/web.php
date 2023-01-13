@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ShopController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +15,11 @@ use App\Http\Controllers\ProductController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/shop1', function () {
-    return view('shop.layout.master');
-});
+// Route::get('/shop1', function () {
+//     return view('shop.layout.master');
+// });
+
+Route::get('/home', [ShopController::class,'index'])->name('shop.index');
 
 
 Route::get('/', function () {
