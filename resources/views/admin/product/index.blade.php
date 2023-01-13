@@ -46,6 +46,7 @@
                     <th >{{ ++$key }}</th>
                     <th >{{ $product->name }}</th>
                     <th >{{ $product->price }}</th>
+                    <th >{{ $product->description }}</th>
                     <th >{{ $product->category->name}}</th>
                     <td>
                         <img style="width:200px ; height: 165px ; border-radius:0%" src="{{ asset('public/assets/product/'. $product->image) }}" alt=""

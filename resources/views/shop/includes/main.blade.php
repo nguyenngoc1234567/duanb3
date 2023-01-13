@@ -85,18 +85,14 @@
             <div class="product-img position-relative overflow-hidden">
                 <img class="img-fluid w-100" src="{{asset('public/assets/product/' .$product->image)}}" alt="">
                 <div class="product-action">
-                    <a class="btn btn-outline-dark btn-square" href=""><i
+                    <a class="btn btn-outline-dark btn-square"href="{{route('shop.store',$product->id)}}" id="{{ $product->id }}"><i
                             class="fa fa-shopping-cart"></i></a>
-                    <a class="btn btn-outline-dark btn-square" href=""><i
-                            class="far fa-heart"></i></a>
-                    <a class="btn btn-outline-dark btn-square" href=""><i
-                            class="fa fa-sync-alt"></i></a>
-                    <a class="btn btn-outline-dark btn-square" href=""><i
+                    <a class="btn btn-outline-dark btn-square"  href="{{ route('shop.showProduct' , $product->id) }}"><i
                             class="fa fa-search"></i></a>
                 </div>
             </div>
             <div class="text-center py-4" style="font-family: red">
-                <a class="h6 text-decoration-none text-truncate" href=""class="font-family">Tên sản phẩm:{{$product->name}}</a>
+                <a class="h6 text-decoration-none text-truncate" href="{{ route('shop.showProduct' , $product->id) }}"class="font-family">Tên sản phẩm:{{$product->name}}</a>
                 <div class="d-flex align-items-center justify-content-center mt-2">
                     <h5>Giá:{{number_format($product->price) }}$</h5>
                 </div>

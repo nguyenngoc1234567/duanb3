@@ -18,6 +18,16 @@ use App\Http\Controllers\ShopController;
 // Route::get('/shop1', function () {
 //     return view('shop.layout.master');
 // });
+//xem chi tiết
+Route::get('/showProduct/{id}', [ShopController::class, 'show'])->name('shop.showProduct');
+// thêm giỏ hàng
+Route::get('/store/{id}', [ShopController::class, 'store'])->name('shop.store');
+//viwe giỏ hàng
+
+Route::get('/cart', [ShopController::class, 'Cart'])->name('cart.index');
+
+//xóa giỏ hàng
+Route::get('/remove-from-cart/{id}', [ShopController::class, 'remove'])->name('remove.from.cart');
 
 Route::get('/home', [ShopController::class,'index'])->name('shop.index');
 
