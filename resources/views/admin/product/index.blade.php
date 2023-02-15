@@ -46,7 +46,7 @@
                     <th >{{ ++$key }}</th>
                     <th >{{ $product->name }}</th>
                     <th >{{ $product->price }}</th>
-                    <th >{{ $product->description }}</th>
+                    <th >{!! html_entity_decode($product->description) !!}</th>
                     <th >{{ $product->category->name}}</th>
                     <td>
                         <img style="width:200px ; height: 165px ; border-radius:0%" src="{{ asset('public/assets/product/'. $product->image) }}" alt=""
@@ -54,8 +54,8 @@
 
 
                     <td >
-                        <form action="{{route('product.delete',[$product->id])}}" method="post">
-                            @method('DELETE')
+                        <form action="{{ route('product.softdeletes', $product->id) }}" method="POST">
+                            @method('put')
                             @csrf
                             <button onclick="return confirm('Bạn có chắc chắn xóa không?');"
                                 class="btn btn-success">Xóa</button>

@@ -42,7 +42,6 @@ class CategoryController extends Controller
         $category = Category::find($id);
         return view('admin.categories.edit', compact(['category']));
 
-
     }
 
     public function update(Request $request, $id)
@@ -55,10 +54,41 @@ class CategoryController extends Controller
     }
 
 
-    public function delete($id)
+    public function destroy($id)
     {
-        $category = Category::find($id);
-        $category->delete();
-        return redirect()->route('categories.index');
+        $category = Category::onlyTrashed()->findOrFail($id);
+        $category->forceDelete();
+        return redirect()->back()->with('status', 'Xóa sản phẩm thành công');
+
+    }
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+        if (!$search) {
+            return redirect()->route('category.index');
+        }
+        $categories = Category::where('name', 'LIKE', '%' . $search . '%')->paginate(5);
+        return view('admin.categories.index', compact('categories'));
+    }
+    public  function softdeletes($id){
+        // $this->authorize('delete', Category::class);
+        date_default_timezone_set("Asia/Ho_Chi_Minh");
+        $category = Category::findOrFail($id);
+        $category->deleted_at = date("Y-m-d h:i:s");
+        $category->save();
+        return redirect()->route('categories.index')->with('status', 'Khôi phục sản phẩm thành công')
+        ;
+    }
+    public  function trash(){
+        // $this->authorize('viewtrash', Category::class);
+        $categories = Category::onlyTrashed()->get();
+        $param = ['categories'    => $categories];
+        return view('admin.categories.trash', $param);
+    }
+    public function restoredelete($id){
+
+        $categories=Category::withTrashed()->where('id', $id);
+        $categories->restore();
+        return redirect()->route('categories.trash');
     }
 }

@@ -48,7 +48,7 @@ class ProductController extends Controller
 
     public function show($id)
     {
-        //
+
     }
 
 
@@ -92,13 +92,39 @@ class ProductController extends Controller
 
         return redirect()->route('products.index');
     }
-
-    public function delete($id)
+    public function destroy($id)
     {
+        $products = Product::onlyTrashed()->findOrFail($id);
+        $products->forceDelete();
+        return redirect()->back()->with('status', 'Xóa sản phẩm thành công');
+
+    }
+    public  function trash(){
+        // $this->authorize('viewtrash', Product::class);
+        $products = Product::onlyTrashed()->get();
+        $param = ['products'    => $products];
+        return view('admin.product.trash', $param);
+    }
+
+    public  function softdeletes($id){
+
+        date_default_timezone_set("Asia/Ho_Chi_Minh");
         $product = Product::findOrFail($id);
-        $product->delete();
-
-
+        $product->deleted_at = date("Y-m-d h:i:s");
+        $product->save();
         return redirect()->route('product.index');
+    }
+
+    public function restoredelete($id){
+        // $this->authorize('restore', Product::class);
+        $product=Product::withTrashed()->where('id', $id);
+        $product->restore();
+        // $notification = [
+        //         'message' => 'Khôi phục thành công!',
+        //          'alert-type' => 'success'
+        //     ];
+        // alert()->success('Khôi phục ','thành công');
+
+        return redirect()->route('product.trash')->with('status', 'khôi phục  sản phẩm thành công');
     }
 }

@@ -1,3 +1,5 @@
+@extends('admin.layout.master')
+@section('content')
 <!doctype html>
 <html lang="en">
 
@@ -14,51 +16,71 @@
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
     </script>
 
-    <table class="table">
-        <a href="{{route('categories.create')}}" class="btn btn-danger">Thêm mới</a>
-        @if (session('status'))
-            <div class="alert alert-success" role="alert">
-                {{ session('status') }}
+    <div class="container">
+        <table class="table">
+            <div class="col-6">
+                <form class="navbar-form navbar-left" action="{{ route('categories.search') }}" method="GET">
+                    @csrf
+                    <div class="row">
+                        <div class="col-8">
+                            <div class="form-group">
+                                <input type="text" name="search" class="form-control" placeholder="Search">
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <button type="submit" class="btn btn-default">Tìm kiếm</button>
+                        </div>
+                    </div>
+                </form>
+                </form>
             </div>
-        @endif
 
-        @if (session('status1'))
-            <div class="alert alert-danger" role="alert">
-                {{ session('status1') }}
-            </div>
-        @endif
 
-        <thead>
-            <tr>
-                <th >id</th>
-                <th >Tên thể loại </th>
-                <th >Tùy chỉnh </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($Categories as $key => $category)
-                <tr>
-                    <th>{{ $key+1 }}</th>
-                    <th >{{ $category->name }}</th>
-                    {{-- <th scope="row">{{$key+1}}</th>
+            <table class="table">
+                <a href="{{ route('categories.create') }}" class="btn btn-danger">Thêm mới</a>
+                @if (session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
+                @endif
+
+                @if (session('status1'))
+                    <div class="alert alert-danger" role="alert">
+                        {{ session('status1') }}
+                    </div>
+                @endif
+
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>Tên thể loại </th>
+                        <th>Tùy chỉnh </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($Categories as $key => $category)
+                        <tr>
+                            <th>{{ $key + 1 }}</th>
+                            <th>{{ $category->name }}</th>
+                            {{-- <th scope="row">{{$key+1}}</th>
             <td>{{ $team->name }}</td> --}}
 
 
-                    <td>
-                        <form action="{{route('categories.delete',[$category->id])}}" method="post">
-                            @method('DELETE')
-                            @csrf
-                            <button onclick="return confirm('Bạn có chắc chắn xóa không?');"
-                                class="btn btn-success">Xóa</button>
-                            <a href="{{route('categories.edit',[$category->id])}}" class="btn btn-primary">Chỉnh sửa</a>
-                        </form>
-                    </td>
-                </tr>
-
-
-            @endforeach
-        </tbody>
-    </table>
+                            <td>
+                                <form action="{{ route('categories.softdeletes', [$category->id]) }}" method="POST">
+                                    {{-- @method('DELETE') --}}
+                                    @csrf
+                                    @method('put')
+                                    <button onclick="return confirm('Bạn có chắc chắn xóa không?');"
+                                        class="btn btn-success">Xóa</button>
+                                    <a href="{{ route('categories.edit', [$category->id]) }}"
+                                        class="btn btn-primary">Chỉnh sửa</a>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
 </body>
-
 </html>
+@endsection

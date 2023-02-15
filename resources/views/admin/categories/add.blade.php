@@ -1,3 +1,5 @@
+@extends('admin.layout.master')
+@section('content')
 <form action="{{route('categories.store')}}" method ='post'>
     @csrf
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -22,5 +24,10 @@
             </div>
            </div>
         </div>
-     </div><!--end row-->
+     </div>
+     </div>
+     </div>
+     </div>
+    
 </form>
+@endsection
