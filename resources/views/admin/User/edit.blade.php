@@ -1,7 +1,6 @@
 @extends('admin.layout.master')
 @section('content')
     <main class="page-content">
-
         <section class="wrapper">
             <div class="panel-panel-default">
                 <div class="market-updates">
@@ -71,7 +70,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-lg-4">
-                                                    @if (Auth::user()->hasPermission('Group_update'))
+                                                    {{-- @if (Auth::user()->hasPermission('Group_update')) --}}
                                                         <label class="control-label" for="flatpickr01">Chức Vụ<abbr
                                                                 name="Trường bắt buộc">*</abbr></label>
                                                         <select name="group_id" id="" class="form-control">
@@ -85,7 +84,7 @@
                                                         </select>
                                                         @if ('group_id')
                                                             <p style="color:red">{{ $errors->first('group_id') }}</p>
-                                                        @endif
+                                                        {{-- @endif --}}
                                                     @endif
                                                 </div>
                                                 <div class="form-group col-lg-4">

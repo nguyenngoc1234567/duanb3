@@ -35,6 +35,7 @@
                 <th >id</th>
                 <th >Tên </th>
                 <th >Giá</th>
+                <th >Mô tả</th>
                 <th >Thể loại</th>
                 <th >Ảnh</th>
                 <th >tùy chỉnh</th>

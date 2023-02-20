@@ -1,9 +1,16 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('home') }}">
         <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
+            {{-- <i class="fas fa-laugh-wink"></i> --}}
         </div>
-        <div class="">ADMIN<sup></sup></div>
+        <div class="sidebar-profile-image">
+            <img src="{{ asset('storage/images/user/' . auth()->user()->image) }}" width="70" height="60" alt="" />
+            {{-- <span class="sidebar-status-indicator"></span> --}}
+            {{-- <img src="{{ asset('storage/images/user/' . auth()->user()->image) }}" --}}
+
+            <span class="sidebar-status-indicator"></span>
+        </div>
+
     </a>
     <hr class="sidebar-divider my-0">
     {{-- <li class="nav-item active">
@@ -47,16 +54,15 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilitiess"
+        <a class="nav-link collapsed" href="{{ route('user.index') }}" data-toggle="collapse" data-target="#collapseUtilitiess"
             aria-expanded="true" aria-controls="collapseUtilitiess">
             <i class="fas fa-fw fa-wrench"></i>
-            <span>xóa mềm </span>
+            <span>Quản lý nhân sự </span>
         </a>
         <div id="collapseUtilitiess" class="collapse" aria-labelledby="headingUtilities"
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">thùng rác:</h6>
-                <a class="collapse-item" href="">đã xóa  </a>
+                <h6 class="collapse-header">Trang quản lý :</h6>
                 <a class="collapse-item" href="">Trang chủ </a>
             </div>
         </div>

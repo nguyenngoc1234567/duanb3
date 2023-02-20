@@ -47,19 +47,15 @@ border-radius:50%;
                                 @foreach ($users as $key => $user)
                                     <tr data-expanded="true" class="item-{{ $user->id }}">
                                         <td>{{  ++$key }}</td>
-                                        <td><a href="{{ route('user.show', $user->id) }}"><img id="avt" src="{{asset('http://localhost/M3/casestudym3/storage/app/public/images/user/' . $user->image)}}" alt=""></a></td>
+                                        <td><a href=""><img id="avt" src="{{ asset('storage/images/user/' . $user->image) }}" alt=""></a></td>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->phone }}</td>
                                         <td>{{ $user->group->name }}</td>
                                         <td>
-                                            @if (Auth::user()->hasPermission('User_update'))
                                             <a href="{{ route('user.edit', $user->id) }}"
                                                 class="btn btn-warning">Sửa</a>
-                                            @endif
-                                            @if (Auth::user()->hasPermission('User_forceDelete'))
                                             <a data-href="{{ route('user.destroy', $user->id) }}"
                                                 id="{{ $user->id }}" class="btn btn-info deleteIcon">Xóa</i></a>
-                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach

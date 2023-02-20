@@ -76,7 +76,7 @@ class CategoryController extends Controller
         $category = Category::findOrFail($id);
         $category->deleted_at = date("Y-m-d h:i:s");
         $category->save();
-        return redirect()->route('categories.index')->with('status', 'Khôi phục sản phẩm thành công')
+        return redirect()->route('categories.index')->with('status', 'Khôi phụ sản phẩm thành công')
         ;
     }
     public  function trash(){

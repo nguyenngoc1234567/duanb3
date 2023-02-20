@@ -1,7 +1,7 @@
 @extends('admin.layout.master')
 @section('content')
     <main class="page-content">
-        <h1 class="offset-4">Danh sách thể loại</h1>
+        <h1 class="offset-4">Thể loại</h1>
 
 
         <div class="container">
@@ -27,7 +27,6 @@
                                                 <button type="submit" class="btn btn-success">Khôi Phục</button>
                                                 <a  href="{{ route('categories.destroy', $team->id) }}"
                                                     id="{{ $team->id }}" class="btn btn-danger deleteIcon">Xóa</a>
-
                                         </form>
                             </td>
                         </tr>
