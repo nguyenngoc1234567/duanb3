@@ -71,14 +71,15 @@ class ProductController extends Controller
 
         $products->name = $request->name;
         $products->price = $request->price;
+        $products->description = $request->description;
         $products->category_id = $request->category_id;
         $get_image=$request->image;
         if($get_image){
-            $path='public/uploads/product/'.$products->image;
+            $path='public/assets/product/'.$products->image;
             if(file_exists($path)){
                 unlink($path);
             }
-        $path='public/uploads/product/';
+        $path='public/assets/product/';
         $get_name_image=$get_image->getClientOriginalName();
         $name_image=current(explode('.',$get_name_image));
         $new_image=$name_image.rand(0,99).'.'.$get_image->getClientOriginalExtension();
@@ -90,7 +91,7 @@ class ProductController extends Controller
         }
         $products->save();
 
-        return redirect()->route('products.index');
+        return redirect()->route('product.index');
     }
     public function destroy($id)
     {

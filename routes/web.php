@@ -21,6 +21,7 @@ use App\Http\Controllers\UsersController;
 
 Route::prefix('home')->group(function () {
     Route::get('/', [ShopController::class, 'index'])->name('shop.index');
+    // Route::post('/login', [ShopController::class, 'checklogin'])->name('shop.checklogin');
 });
 //
 // đăng nhập đăng kí
@@ -39,8 +40,13 @@ Route::prefix('/')->middleware(['auth', 'prevent-back-history'])->group(function
 
     //xóa giỏ hàng
     Route::get('/remove-from-cart/{id}', [ShopController::class, 'remove'])->name('remove.from.cart');
-
-
+    // xem chi tiết
+    Route::get('/showProduct/{id}', [ShopController::class, 'show'])->name('shop.showProduct');
+    // thêm giỏ hàng
+    Route::get('/store/{id}', [ShopController::class, 'store'])->name('shop.store');
+    // thanh toán
+    Route::get('/checkOuts', [ShopController::class, 'checkOuts'])->name('checkOuts');
+    //
 
     Route::get('/', function () {
         return view('admin.home');

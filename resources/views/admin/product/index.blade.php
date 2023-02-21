@@ -35,7 +35,7 @@
                 <th >id</th>
                 <th >Tên </th>
                 <th >Giá</th>
-                <th >Mô tả</th>
+                {{-- <th >Mô tả</th> --}}
                 <th >Thể loại</th>
                 <th >Ảnh</th>
                 <th >tùy chỉnh</th>
@@ -47,7 +47,7 @@
                     <th >{{ ++$key }}</th>
                     <th >{{ $product->name }}</th>
                     <th >{{ $product->price }}</th>
-                    <th >{!! html_entity_decode($product->description) !!}</th>
+                    {{-- <th >{!! html_entity_decode($product->description) !!}</th> --}}
                     <th >{{ $product->category->name}}</th>
                     <td>
                         <img style="width:200px ; height: 165px ; border-radius:0%" src="{{ asset('public/assets/product/'. $product->image) }}" alt=""

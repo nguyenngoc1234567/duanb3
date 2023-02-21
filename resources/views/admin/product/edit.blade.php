@@ -24,6 +24,11 @@ integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WT
                  <input type="text" class="form-control" value="{{$product->price}}" name="price">
                </div>
                <div class="col-12">
+                <label class="form-label">Mô tả </label>
+                <textarea type="name" class="form-control"value="{{$product->description}}" id="ckeditor1" name="description"></textarea>
+                <small id="" class="form-text text-muted"></small>
+            </div>
+               <div class="col-12">
                 <select name="category_id" id="" class="form-control">
                     <option value="">--Vui lòng chọn--</option>
                     @foreach ($categories as $category)
@@ -36,7 +41,7 @@ integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WT
                </div>
                <div class="col-12">
                 <label class="form-label"> Ảnh </label>
-                <input type="text" class="form-control" value="{{$product->image}}" name="image">
+                <input type="file" class="form-control" value="{{$product->image}}" name="image">
               </div>
 
             <input type="submit" value="Submit">

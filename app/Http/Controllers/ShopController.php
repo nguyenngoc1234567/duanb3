@@ -5,9 +5,23 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ShopController extends Controller
 {
+    // public function checklogin(Request $request)
+    // {
+    //     // dd(123);
+    //     $arr = [
+    //         'email' => $request->email,
+    //         'password' => $request->password
+    //     ];
+    //     if (Auth::guard('customers')->attempt($arr)) {
+    //         return redirect()->route('shop.index');
+    //     } else {
+    //         return redirect()->route('login.index');
+    //     }
+    // }
 
     public function index()
     {
@@ -48,10 +62,10 @@ class ShopController extends Controller
     public function show($id)
     {
         $product = Product::find($id);
-        $categorys = Category::get();
+        $categories = Category::get();
         $param = [
             'product' => $product,
-            'categorys' => $categorys
+            'categories' => $categories
         ];
         return view('shop.showProduct', $param);
     }
@@ -95,4 +109,10 @@ class ShopController extends Controller
     {
 
     }
+    public function checkOuts()
+    {
+        // dd(2121);
+        return view('shop.checkout');
+    }
+
 }
