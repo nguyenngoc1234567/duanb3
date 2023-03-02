@@ -1,6 +1,6 @@
 @extends('shop.layout.master')
 @section('main')
-    <div class="offset-4">
+    <div class="offset-12">
         <div class="product-content-right">
             <div class="woocommerce">
                 <form method="post" action="#">
@@ -28,7 +28,7 @@
                          @endphp
                             <tr class="cart_item">
                                 <td class="product-remove">
-                                    <a title="Remove this item" class="remove" href="#">×</a>
+                                    <a title="Remove this item" class="remove" href="{{ route('remove.from.cart', $id) }}">×</a>
                                 </td>
 
                                 <td class="product-thumbnail">
@@ -71,12 +71,7 @@
                         </tbody>
                     </table>
                 </form>
-
                 <div class="cart-collaterals">
-
-
-
-
                     <div class="cart_totals ">
                         <h2>Tổng thanh toán </h2>
 
@@ -86,12 +81,10 @@
                                     <th>Tổng thu</th>
                                     <td><span class="amount"> {{ number_format($totalAll) }}</span></td>
                                 </tr>
-
                                 <tr class="shipping">
                                     <th>Phí ship </th>
                                     <td>25,000</td>
                                 </tr>
-
                                 <tr class="order-total">
                                     <th>Tổng đơn hàng </th>
                                     <td><strong><span class="amount">{{ number_format($totalAll + 25000)  }}</span></strong> </td>

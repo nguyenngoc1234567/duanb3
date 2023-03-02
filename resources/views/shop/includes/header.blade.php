@@ -4,11 +4,11 @@
             <div class="col-md-8">
                 <div class="user-menu">
                     <ul>
-                        <li><a href="#"><i class="fa fa-user"></i> My Account</a></li>
-                        <li><a href="#"><i class="fa fa-heart"></i> Wishlist</a></li>
-                        <li><a href="cart.html"><i class="fa fa-user"></i> My Cart</a></li>
-                        <li><a href="checkout.html"><i class="fa fa-user"></i> Checkout</a></li>
-                        <li><a href="#"><i class="fa fa-user"></i> Login</a></li>
+                        <li><a href="#"><i class="fa fa-user"></i>Tài khoản của tôi</a></li>
+                        <li><a href="#"><i class="fa fa-heart"></i>Danh sách yêu thích </a></li>
+                        <li><a href="{{route('cart.index')}}"><i class="fa fa-user"></i>Giỏ hàng của tôi</a></li>
+                        <li><a href="{{route('login.index')}}"><i class="fa fa-user"></i>Đăng nhập </a></li>
+                        <li><a href="#"><i class="fa fa-user"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -26,10 +26,9 @@
                     <h1><a href="./"><img src="{{asset('shop/ustora/img/logo.png')}}"></a></h1>
                 </div>
             </div>
-
             <div class="col-sm-6">
                 <div class="shopping-item">
-                    <a href="{{route('cart.index')}}">Cart - <span class="cart-amunt">$100</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a>
+                    <a href="{{route('cart.index')}}">Cart - <span class="cart-amunt">$300</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a>
                 </div>
             </div>
         </div>
@@ -48,12 +47,13 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-
                     <li class="active"><a href= "{{route('shop.index')}}">Trang  chủ</a></li>
                     <li><a href="cart.html">Giỏ hàng </a></li>
                     <li><a href="checkout.html">Thanh toán</a></li>
                     <li><a href="#">Liên hệ </a></li>
+
                 </ul>
+
             </div>
         </div>
     </div>

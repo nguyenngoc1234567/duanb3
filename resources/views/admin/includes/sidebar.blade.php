@@ -64,6 +64,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Trang quản lý :</h6>
                 <a class="collapse-item" href="">Trang chủ </a>
+                <a class="collapse-item" href="{{ route('user.index') }}">Danh sách </a>
             </div>
         </div>
     </li>

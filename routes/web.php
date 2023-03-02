@@ -19,10 +19,9 @@ use App\Http\Controllers\UsersController;
 |
 */
 
-Route::prefix('home')->group(function () {
-    Route::get('/', [ShopController::class, 'index'])->name('shop.index');
-    // Route::post('/login', [ShopController::class, 'checklogin'])->name('shop.checklogin');
-});
+// Route::prefix('home')->group(function () {
+//     Route::get('/', [ShopController::class, 'index'])->name('shop.index');
+// });
 //
 // đăng nhập đăng kí
 Route::get('/login', [AuthController::class, 'login'])->name('login');
@@ -30,24 +29,6 @@ Route::post('/postlogin', [AuthController::class, 'postlogin'])->name('postlogin
 
 Route::prefix('/')->middleware(['auth', 'prevent-back-history'])->group(function () {
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-    //xem chi tiết
-    Route::get('/showProduct/{id}', [ShopController::class, 'show'])->name('shop.showProduct');
-    // thêm giỏ hàng
-    Route::get('/store/{id}', [ShopController::class, 'store'])->name('shop.store');
-    //viwe giỏ hàng
-
-    Route::get('/cart', [ShopController::class, 'Cart'])->name('cart.index');
-
-    //xóa giỏ hàng
-    Route::get('/remove-from-cart/{id}', [ShopController::class, 'remove'])->name('remove.from.cart');
-    // xem chi tiết
-    Route::get('/showProduct/{id}', [ShopController::class, 'show'])->name('shop.showProduct');
-    // thêm giỏ hàng
-    Route::get('/store/{id}', [ShopController::class, 'store'])->name('shop.store');
-    // thanh toán
-    Route::get('/checkOuts', [ShopController::class, 'checkOuts'])->name('checkOuts');
-    //
-
     Route::get('/', function () {
         return view('admin.home');
     })->name('home');
@@ -98,4 +79,20 @@ Route::prefix('/')->middleware(['auth', 'prevent-back-history'])->group(function
         Route::delete('destroy/{id}', [GroupController::class, 'destroy'])->name('group.destroy');
     });
 });
-//
+
+
+
+Route::prefix('shop1')->group(function () {
+Route::get('/', [ShopController::class, 'index'])->name('shop.index');
+Route::get('/showProduct/{id}', [ShopController::class, 'show'])->name('shop.showProduct');
+Route::get('/store/{id}', [ShopController::class, 'store'])->name('shop.store');
+Route::get('/cart', [ShopController::class, 'Cart'])->name('cart.index');
+Route::get('/remove-from-cart/{id}', [ShopController::class, 'remove'])->name('remove.from.cart');
+Route::get('/checkOuts', [ShopController::class, 'checkOuts'])->name('checkOuts');
+Route::get('/login', [ShopController::class, 'indexlogin'])->name('login.index');
+Route::post('/checkregister', [ShopController::class, 'checkregister'])->name('shop.checkregister');
+Route::get('/register', [ShopController::class, 'register'])->name('shop.register');
+Route::post('/checklogin', [ShopController::class, 'checklogin'])->name('shop.checklogin');
+Route::post('/order', [ShopController::class, 'order'])->name('order');
+Route::delete('/remove-from-cart/{id}', [ShopController::class, 'remove'])->name('remove.from.cart');
+});
