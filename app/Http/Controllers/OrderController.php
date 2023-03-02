@@ -15,22 +15,22 @@ class OrderController extends Controller
     public function index()
     {
         {
-            $this->authorize('viewAny', Order::class);
+            // $this->authorize('viewAny', Order::class);
             $items=Order::get();
-            return view('order.index',compact('items'));
+            return view('admin.orders.index',compact('items'));
         }
     }
 
     public function detail($id)
     {
-        $this->authorize('view', Order::class);
+        // $this->authorize('view', Order::class);
         $items=DB::table('order_details')
         ->join('orders','order_details.order_id','=','orders.id')
         ->join('products','order_details.product_id','=','products.id')
         ->select('products.*', 'order_details.*','orders.id')
         ->where('orders.id','=',$id)->get();
         // dd($items);
-        return view('order.orderdetail',compact('items'));
+        return view('admin.orders.orderdetail',compact('items'));
     }
 
 

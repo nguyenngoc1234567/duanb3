@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\GroupController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\UsersController;
@@ -80,7 +81,11 @@ Route::prefix('/')->middleware(['auth', 'prevent-back-history'])->group(function
     });
 });
 
-
+Route::prefix('order')->group(function () {
+    Route::get('/', [OrderController::class, 'index'])->name('order.index');
+    Route::get('/detail/{id}', [OrderController::class, 'detail'])->name('order.detail');
+});
+Route::get('/xuat', [OrderController::class, 'exportOrder'])->name('xuat');
 
 Route::prefix('shop1')->group(function () {
 Route::get('/', [ShopController::class, 'index'])->name('shop.index');
