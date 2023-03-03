@@ -16,7 +16,7 @@ class OrderController extends Controller
     {
         {
             // $this->authorize('viewAny', Order::class);
-            $items=Order::get();
+            $items=Order::orderBy('id', 'DESC')->paginate(5);
             return view('admin.orders.index',compact('items'));
         }
     }

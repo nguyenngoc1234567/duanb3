@@ -30,7 +30,8 @@
                         <a class='btn btn-info' href="{{ route('order.detail', $item->id) }}">Chi tiết</a>
                     </td>
                 </tr>
-            @endforeach
-        </tbody>
-    </table>
+                @endforeach
+            </tbody>
+        </table>
+        {{ $items->appends(Request::all())->links() }}
 @endsection

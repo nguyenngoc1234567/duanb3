@@ -10,13 +10,11 @@ class CategoryController extends Controller
 
     public function index()
     {
-        $Categories = Category::all();
+        $Categories = Category::orderBy('id', 'DESC')->get();
         // dd($Categories);
         return view('admin.categories.index', compact('Categories'));
 
     }
-
-
     public function create()
     {
         // dd(1);

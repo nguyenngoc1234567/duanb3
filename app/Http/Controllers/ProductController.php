@@ -12,7 +12,7 @@ class ProductController extends Controller
 
     public function index()
     {
-        $Product = Product::all();
+        $Product = Product::orderBy('id', 'DESC')->get();
         // dd($Categories);
         return view('admin.product.index', compact('Product'));
     }
