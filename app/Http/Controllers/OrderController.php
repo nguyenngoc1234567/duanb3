@@ -4,7 +4,8 @@ use App\Models\Order;
 use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
-
+use App\Exports\OrdersExport;
+use Maatwebsite\Excel\Facades\Excel;
 class OrderController extends Controller
 {
     /**
@@ -62,7 +63,7 @@ class OrderController extends Controller
     {
 
     }
-    // public function exportOrder(){
-    //     return Excel::download(new OrderExport, 'order.xlsx');
-    // }
+    public function exportOrder(){
+        return Excel::download(new OrdersExport, 'order.xlsx');
+    }
 }

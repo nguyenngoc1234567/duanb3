@@ -14,10 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::table('orders', function (Blueprint $table) {
-            $table->integer('customer_id')->references('id')->on('customers')->onDelete('cascade');
             $table->date('date_at')->nullable();
             $table->date('date_ship')->nullable();
             $table->string('note')->nullable();
+            $table->unsignedBigInteger('customer_id');
+            $table->foreign('customer_id')->references('id')->on('customers');
         });
     }
 
@@ -28,8 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('orders', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('orders');
     }
 };
