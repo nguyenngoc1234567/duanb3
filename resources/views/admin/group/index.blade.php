@@ -6,15 +6,15 @@
         <div class="table-agile-info">
             <div class="panel-panel-default">
                 <header class="page-title-bar">
-
+                    <h1 class="page-title">Nhóm Quyền</h1>
+                    <nav aria-label="breadcrumb">
+                                <a href="{{ route('group.create') }}" class="btn btn-info">Tạo nhóm quyền</a>
+                    </nav>
                 </header>
                 <hr>
                 <div class="panel-heading">
-                    <h2 class="offset-4">Danh Sách Nhóm Nhân Viên</h2>
+                   <h3>Danh Sách Nhóm Quyền</h3>
                 </div>
-                <nav aria-label="breadcrumb">
-                     <a href="{{ route('group.create') }}" class="btn btn-success">Tạo nhóm nhân viên</a>
-                </nav>
                 <div>
                     <table class="table" ui-jq="footable"
                         ui-options='{
@@ -39,30 +39,26 @@
                             @foreach ($groups as $key => $group)
                                 <tr data-expanded="true" class="item-{{ $group->id }}">
                                     <td>{{ $key + 1 }}</td>
-
                                     <td>{{ $group->name }} </td>
                                     <td>Hiện có {{ count($group->users) }} người</td>
                                     <td>
-                                        <form action="" method="POST">
+
+                                        <form action="{{ route('group.destroy', $group->id) }}" method="POST">
                                             @csrf
                                             @method('PUT')
-                                            <a class="btn btn-primary " href="">Trao Quyền</a>
-
-                                            <a href="{{route('group.edit', [$group->id])}}"
+                                            <a class="btn btn-primary " href="{{route('group.detail', $group->id)}}">Trao Quyền</a>
+                                            <a href="{{ route('group.edit', $group->id) }}"
                                                 class="btn btn-warning">Sửa</a>
-
-
                                                 <a data-href="{{ route('group.destroy', $group->id) }}"
-                                                    id="{{ $group->id }}" class="btn btn-danger sm deleteIcon">Xóa</a>
-
+                                                    id="{{ $group->id }}" class="btn btn-danger sm d    ">Xóa</a>
                                         </form>
+
                                     </td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
                     {{ $groups->appends(request()->query()) }}
-
                 </div>
             </div>
     </section>

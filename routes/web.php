@@ -78,6 +78,10 @@ Route::prefix('/')->middleware(['auth', 'prevent-back-history'])->group(function
         Route::get('/edit/{id}', [GroupController::class, 'edit'])->name('group.edit');
         Route::put('/update/{id}', [GroupController::class, 'update'])->name('group.update');
         Route::delete('destroy/{id}', [GroupController::class, 'destroy'])->name('group.destroy');
+
+        // trao quyền
+        Route::get('/detail/{id}', [GroupController::class, 'detail'])->name('group.detail');
+        Route::put('/group_detail/{id}', [GroupController::class, 'group_detail'])->name('group.group_detail');
     });
 });
 
@@ -100,4 +104,5 @@ Route::get('/register', [ShopController::class, 'register'])->name('shop.registe
 Route::post('/checklogin', [ShopController::class, 'checklogin'])->name('shop.checklogin');
 Route::post('/order', [ShopController::class, 'order'])->name('order');
 Route::delete('/remove-from-cart/{id}', [ShopController::class, 'remove'])->name('remove.from.cart');
+
 });

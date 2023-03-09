@@ -13,8 +13,7 @@
                 </div>
             </div>
         </div>
-    </div> <!-- End site branding area -->
-
+    </div> 
     <div class="mainmenu-area">
         <div class="container">
             <div class="row">

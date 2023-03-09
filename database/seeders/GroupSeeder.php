@@ -13,6 +13,7 @@ class GroupSeeder extends Seeder
      *
      * @return void
      */
+
     public function run()
     {
         DB::table('groups')->insert([

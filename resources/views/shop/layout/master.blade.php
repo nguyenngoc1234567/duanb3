@@ -29,7 +29,7 @@
                         <a class="caption button-radius" href="#"><span class="icon"></span>Shop now</a>
                     </div>
                 </li>
-                <li><img src="https://cdn.baogiaothong.vn/upload/images/2020-3/album_img/2020-09-08/ducati-959-panigale-cafe-racer-10-1599541597-width1004height565.jpg" alt="Slide">
+                <li><img src="https://static1.cafeland.vn/cafeauto/hinh-anh/2021/07/19/146/1285c7da429babc5f28a.jpg" alt="Slide">
                     <div class="caption-group">
                         <h2 class="caption title">
                             Ducati <span class="primary">3% <strong>off</strong></span>
@@ -38,7 +38,7 @@
                         <a class="caption button-radius" href="#"><span class="icon"></span>Shop now</a>
                     </div>
                 </li>
-                <li><img src="https://xedoisong.vn/uploads/20221025/sieu_mo_to_ducati_959_panigale_ra_mat_gia_tu_446_trieu_dong_3__fqzy.jpg" alt="Slide">
+                <li><img src="https://static1.cafeland.vn/cafeauto/hinh-anh/2021/07/19/146/BAI-2021-Harley-Davidson-Sport-5260-6405-1626339501.jpg" alt="Slide">
                     <div class="caption-group">
                         <h2 class="caption title">
                             Apple <span class="primary">Store <strong>Ipod</strong></span>

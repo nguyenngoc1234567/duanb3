@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Group;
-
+use App\Models\Role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class GroupController extends Controller
 {
@@ -111,5 +112,50 @@ class GroupController extends Controller
     {
         $group = Group::find($id);
         $group->delete();
+    }
+
+
+
+
+
+    public function detail($id)
+    {
+        $group=Group::find($id);
+
+        $current_user = Auth::user();
+        $userRoles = $group->roles->pluck('id', 'name')->toArray();
+        // dd($userRoles);
+        $roles = Role::all()->toArray();
+        $group_names = [];
+        /////lấy tên nhóm quyền
+        foreach ($roles as $role) {
+            $group_names[$role['group_name']][] = $role;
+        }
+        $params = [
+            'group' => $group,
+            'userRoles' => $userRoles,
+            'roles' => $roles,
+            'group_names' => $group_names,
+        ];
+        return view('admin.group.detail',$params);
+    }
+
+     /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function group_detail(Request $request,$id)
+    {
+        $notification = [
+            'message' => 'Cấp Quyền Thành Công!',
+            'alert-type' => 'success'
+        ];
+        $group= Group::find($id);
+        $group->roles()->detach();
+        $group->roles()->attach($request->roles);
+        return redirect()->route('group.index')->with($notification);;
     }
 }

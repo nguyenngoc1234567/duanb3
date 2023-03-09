@@ -39,7 +39,6 @@ class ShopController extends Controller
     public function create()
 
 
-
     {
 
     }
@@ -107,10 +106,7 @@ class ShopController extends Controller
     }
 
 
-    public function update(Request $request, $id)
-    {
 
-    }
 
     public function destroy($id)
     {
@@ -202,5 +198,6 @@ class ShopController extends Controller
         return redirect()->route('shop.index')->with($notification);;
 
     }
+    
 
 }
