@@ -104,4 +104,5 @@ Route::prefix('shop1')->group(function () {
     Route::post('/checklogin', [ShopController::class, 'checklogin'])->name('shop.checklogin');
     Route::post('/order', [ShopController::class, 'order'])->name('order');
     Route::delete('/remove-from-cart/{id}', [ShopController::class, 'remove'])->name('remove.from.cart');
+    Route::patch('update-cart', [ShopController::class, 'update']);
 });

@@ -132,4 +132,5 @@ class ProductController extends Controller
 
         return redirect()->route('product.trash')->with('status', 'khôi phục  sản phẩm thành công');
     }
+    
 }

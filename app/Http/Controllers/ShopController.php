@@ -197,6 +197,15 @@ class ShopController extends Controller
         return redirect()->route('shop.index')->with($notification);;
 
     }
-
+    public function update(Request $request)
+    {
+        if($request->id and $request->quantity)
+        {
+            $cart = session()->get('cart');
+            $cart[$request->id]["quantity"] = $request->quantity;
+            session()->put('cart', $cart);
+            session()->flash('success', 'Giỏ hàng được cập nhật thành công');
+        }
+    }
 
 }

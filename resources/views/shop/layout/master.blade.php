@@ -8,6 +8,11 @@
     <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,700,600' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,100' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="{{ asset('shop/ustora/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('shop/ustora/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('shop/ustora/css/owl.carousel.css') }}">
@@ -93,7 +98,7 @@
     <div class="maincontent-area">
         @yield('main')
     </div> <!-- End main content area -->
-    <div class="brands-area">
+    {{-- <div class="brands-area">
         <div class="zigzag-bottom"></div>
         <div class="container">
             <div class="row">
@@ -113,7 +118,7 @@
                 </div>
             </div>
         </div>
-    </div> <!-- End brands area -->
+    </div> --}}
     <div class="footer-top-area">
         <div class="zigzag-bottom"></div>
         <div class="container">
@@ -196,6 +201,8 @@
         </div>
     </div>
     </div> <!-- End footer bottom area -->
+    @yield('scripts')
+
     <script src="https://code.jquery.com/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="{{ asset('shop/ustora/js/owl.carousel.min.js') }}"></script>

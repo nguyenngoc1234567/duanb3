@@ -13,7 +13,7 @@
                 </div>
             </div>
         </div>
-    </div> 
+    </div>
     <div class="mainmenu-area">
         <div class="container">
             <div class="row">
@@ -180,10 +180,6 @@
                     </table>
 
                     <h4 style="color:red ">Tổng tiền:{{ number_format($totalAll) }}</h4 style="color: ">
-
-
-
-
                     <div id="payment">
                         <ul class="payment_methods methods">
                         </ul>
@@ -202,6 +198,4 @@
     </div>
     </div>
     </div>
-
-
 @endsection
