@@ -52,8 +52,17 @@ border-radius:50%;
                                         <td>{{ $user->phone }}</td>
                                         <td>{{ $user->group->name }}</td>
                                         <td>
+                                            @if (Auth::user()->hasPermission('User_update'))
                                             <a href="{{ route('user.edit', $user->id) }}"
-                                                class="btn btn-warning">Sửa</a>
+                                                class="btn btn-primary">Sửa</a>
+                                            @endif
+                                            @if (Auth::user()->hasPermission('User_forceDelete'))
+                                            <a data-href="{{ route('user.destroy', $user->id) }}"
+                                                id="{{ $user->id }}" class="btn btn-danger deleteIcon">Xóa</i></a>
+                                            @endif
+                                           
+                                            {{-- <a href="{{ route('user.edit', $user->id) }}"
+                                                class="btn btn-warning">Sửa</a> --}}
                                             <a data-href="{{ route('user.destroy', $user->id) }}"
                                                 id="{{ $user->id }}" class="btn btn-info deleteIcon">Xóa</i></a>
                                         </td>

@@ -11,6 +11,7 @@ class UsersController extends Controller
 
     public function index()
     {
+        $this->authorize('viewAny', User::class);
         $users = User::all();
         // $users = User::search()->paginate(4);
         $param = [
@@ -28,12 +29,15 @@ class UsersController extends Controller
     }
     public function create()
     {
+
+        $this->authorize('create', User::class);
         $groups = Group::all();
         return view('admin.user.add', compact(['groups']));
     }
 
     public function store(Request $request)
     {
+        $this->authorize('view', User::class);
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
@@ -74,6 +78,7 @@ class UsersController extends Controller
 
     public function edit($id)
     {
+        $this->authorize('view', User::class);
         $user = User::find($id);
         $groups=Group::get();
         $param = [
@@ -113,7 +118,7 @@ class UsersController extends Controller
 
     public function destroy($id)
     {
-        // $this->authorize('forceDelete', Product::class);
+        $this->authorize('forceDelete', Product::class);
 
 
         $user = User::find($id);

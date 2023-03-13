@@ -10,6 +10,7 @@ class CategoryController extends Controller
 
     public function index()
     {
+        $this->authorize('viewAny', Category::class);
         $Categories = Category::orderBy('id', 'DESC')->get();
         // dd($Categories);
         return view('admin.categories.index', compact('Categories'));
@@ -17,7 +18,7 @@ class CategoryController extends Controller
     }
     public function create()
     {
-        // dd(1);
+        $this->authorize('create', Product::class);
         return view('admin.categories.add');
     }
 
@@ -37,6 +38,7 @@ class CategoryController extends Controller
 
     public function edit($id)
     {
+        $this->authorize('view', Product::class);
         $category = Category::find($id);
         return view('admin.categories.edit', compact(['category']));
 
@@ -54,6 +56,7 @@ class CategoryController extends Controller
 
     public function destroy($id)
     {
+        $this->authorize('forceDelete', Product::class);
         $category = Category::onlyTrashed()->findOrFail($id);
         $category->forceDelete();
         return redirect()->back()->with('status', 'Xóa sản phẩm thành công');
@@ -69,22 +72,22 @@ class CategoryController extends Controller
         return view('admin.categories.index', compact('categories'));
     }
     public  function softdeletes($id){
-        // $this->authorize('delete', Category::class);
+        $this->authorize('delete', Product::class);
         date_default_timezone_set("Asia/Ho_Chi_Minh");
         $category = Category::findOrFail($id);
         $category->deleted_at = date("Y-m-d h:i:s");
         $category->save();
-        return redirect()->route('categories.index')->with('status', 'Khôi phụ sản phẩm thành công')
+        return redirect()->route('categories.index')->with('status', 'thêm thể loại vào thùng rác thành công')
         ;
     }
     public  function trash(){
-        // $this->authorize('viewtrash', Category::class);
+        $this->authorize('viewtrash', Product::class);
         $categories = Category::onlyTrashed()->get();
         $param = ['categories'    => $categories];
         return view('admin.categories.trash', $param);
     }
     public function restoredelete($id){
-
+        $this->authorize('restore', Product::class);
         $categories=Category::withTrashed()->where('id', $id);
         $categories->restore();
         return redirect()->route('categories.trash');

@@ -177,7 +177,6 @@ class ShopController extends Controller
             DB::table('products')
                 ->where('id', '=', $orderItem->product_id)
                 ->decrement('quantity', $orderItem->quantity);
-
         }
 
         $notification = [
@@ -198,6 +197,6 @@ class ShopController extends Controller
         return redirect()->route('shop.index')->with($notification);;
 
     }
-    
+
 
 }

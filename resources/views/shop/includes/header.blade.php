@@ -8,6 +8,7 @@
                         <li><a href="#"><i class="fa fa-heart"></i>Danh sách yêu thích </a></li>
                         <li><a href="{{route('cart.index')}}"><i class="fa fa-user"></i>Giỏ hàng của tôi</a></li>
                         <li><a href="{{route('login.index')}}"><i class="fa fa-user"></i>Đăng nhập </a></li>
+                        <li><a href="{{route('login.index')}}"><i class="fa fa-user"></i>Đăng xuất </a></li>
                         <li><a href="#"><i class="fa fa-user"></i></a></li>
                     </ul>
                 </div>

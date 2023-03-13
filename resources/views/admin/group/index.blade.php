@@ -46,6 +46,7 @@
                                         <form action="{{ route('group.destroy', $group->id) }}" method="POST">
                                             @csrf
                                             @method('PUT')
+
                                             <a class="btn btn-primary " href="{{route('group.detail', $group->id)}}">Trao Quyền</a>
                                             <a href="{{ route('group.edit', $group->id) }}"
                                                 class="btn btn-warning">Sửa</a>

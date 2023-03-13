@@ -60,10 +60,18 @@
                             </td>
                         </tr>
                         @endforeach
+                        @else
+                        <tr>
+                            <td>
+                               <h4>Giỏ hàng đang rỗng?</h4>
+                               <button> <h4><a href="{{route('shop.index')}}">Tiếp tục đi mua sắm nào </a></h4></button>
+
+                            </td>
+                        </tr>
                         @endif
                         <tr>
                             <td class="actions" colspan="6">
-                               
+
                                     <a href="{{ route('checkOuts') }}" class="btn btn-danger pull-right">Thanh toán</a>
                             </td>
                         </tr>

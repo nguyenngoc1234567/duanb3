@@ -12,6 +12,7 @@ class ProductController extends Controller
 
     public function index()
     {
+        $this->authorize('viewAny', Product::class);
         $Product = Product::orderBy('id', 'DESC')->get();
         // dd($Categories);
         return view('admin.product.index', compact('Product'));
@@ -20,6 +21,7 @@ class ProductController extends Controller
 
     public function create()
     {
+        $this->authorize('create', Product::class);
         $category = Category::all();
         return view('admin.product.add', compact(['category']));
     }
@@ -54,6 +56,7 @@ class ProductController extends Controller
 
     public function edit($id)
     {
+        $this->authorize('update', Product::class);
         $product = Product::find($id);
         $categories=Category::get();
         $param = [
@@ -95,20 +98,21 @@ class ProductController extends Controller
     }
     public function destroy($id)
     {
+        $this->authorize('forceDelete', Product::class);
         $products = Product::onlyTrashed()->findOrFail($id);
         $products->forceDelete();
         return redirect()->back()->with('status', 'Xóa sản phẩm thành công');
 
     }
     public  function trash(){
-        // $this->authorize('viewtrash', Product::class);
+        $this->authorize('viewtrash', Product::class);
         $products = Product::onlyTrashed()->get();
         $param = ['products'    => $products];
         return view('admin.product.trash', $param);
     }
 
     public  function softdeletes($id){
-
+        $this->authorize('delete', Product::class);
         date_default_timezone_set("Asia/Ho_Chi_Minh");
         $product = Product::findOrFail($id);
         $product->deleted_at = date("Y-m-d h:i:s");
@@ -117,7 +121,7 @@ class ProductController extends Controller
     }
 
     public function restoredelete($id){
-        // $this->authorize('restore', Product::class);
+        $this->authorize('restore', Product::class);
         $product=Product::withTrashed()->where('id', $id);
         $product->restore();
         // $notification = [

@@ -71,10 +71,18 @@
                                     {{-- @method('DELETE') --}}
                                     @csrf
                                     @method('put')
-                                    <button onclick="return confirm('Bạn có chắc chắn xóa không?');"
+                                    @csrf
+                                    @if (Auth::user()->hasPermission('Category_delete'))
+                                     <button type="submit" class="btn btn-danger"
+                                    onclick="return confirm('Chuyên vào thùng rác')">Xóa</button>
+                                    @endif
+                                    @if (Auth::user()->hasPermission('Category_update'))
+                                    <a href="{{ route('categories.edit', [$category->id]) }}" class="btn btn-primary">Sửa</a>
+                                    @endif
+                                    {{-- <button onclick="return confirm('Bạn có chắc chắn xóa không?');"
                                         class="btn btn-success">Xóa</button>
                                     <a href="{{ route('categories.edit', [$category->id]) }}"
-                                        class="btn btn-primary">Chỉnh sửa</a>
+                                        class="btn btn-primary">Chỉnh sửa</a> --}}
                                 </form>
                             </td>
                         </tr>
