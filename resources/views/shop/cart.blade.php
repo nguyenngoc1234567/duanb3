@@ -11,7 +11,7 @@
                                 <th class="product-name">Sản phẩm</th>
                                 <th class="product-price">Giá</th>
                                 <th class="product-quantity">Số lượng</th>
-                                <th class="product-quantity">Số lượng</th>
+                                <th class="product-quantity">Tổng tiền</th>
 
                                 <th class="product-subtotal">Tùy chọn</th>
                                 <th class="product-subtotal">Tổng</th>
@@ -30,7 +30,7 @@
                                         $totalAll += $total;
                                     @endphp
                                     <tr class="cart_item">
-                                    
+
 
                                         <td class="product-thumbnail">
                                             <a href="single-product.html"><img width="145" height="145"
@@ -48,12 +48,16 @@
 
 
                                         <td data-th="Quantity">
-                                            <input type="number" value="{{ $details['quantity'] }}" class="form-control quantity" />
+                                            <input type="number" value="{{ $details['quantity'] }}"
+                                                class="form-control quantity" />
                                         </td>
-                                        <td data-th="Subtotal" class="text-center">${{ $details['price'] * $details['quantity'] }}</td>
+                                        <td data-th="Subtotal" class="text-center">
+                                            ${{ $details['price'] * $details['quantity'] }}</td>
                                         <td class="actions" data-th="">
-                                            <button class="btn btn-info btn-sm update-cart" data-id="{{ $id }}"><i class="fa fa-refresh"></i></button>
-                                            <button class="btn btn-danger btn-sm remove-from-cart" data-id="{{ $id }}"><i class="fa fa-trash-o"></i></button>
+                                            <button class="btn btn-info btn-sm update-cart" data-id="{{ $id }}"><i
+                                                    class="fa fa-refresh"></i></button>
+                                            <button class="btn btn-danger btn-sm remove-from-cart"
+                                                data-id="{{ $id }}"><i class="fa fa-trash-o"></i></button>
                                         </td>
                                         <td class="product-subtotal">
                                             <span class="amount">{{ number_format($total) }}</span>
@@ -128,18 +132,15 @@
                 }
             });
         });
-        $(".remove-from-cart").click(function(e) {
+        $(".remove-from-cart").click(function (e) {
             e.preventDefault();
             var ele = $(this);
-            if (confirm("Are you sure")) {
+            if(confirm("Bạn có muốn xóa?")) {
                 $.ajax({
                     url: '{{ url('shop1/remove-from-cart') }}',
                     method: "DELETE",
-                    data: {
-                        _token: '{{ csrf_token() }}',
-                        id: ele.attr("data-id")
-                    },
-                    success: function(response) {
+                    data: {_token: '{{ csrf_token() }}', id: ele.attr("data-id")},
+                    success: function (response) {
                         window.location.reload();
                     }
                 });

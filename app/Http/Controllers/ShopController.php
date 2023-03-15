@@ -85,17 +85,27 @@ class ShopController extends Controller
         ];
         return view('shop.cart', $param);
     }
+    // public function remove(Request $request)
+    // {
+    //     // dd(1111111111);
+    //     if ($request->id) {
+    //         $cart = session()->get('cart');
+    //         if (isset($cart[$request->id])) {
+    //             unset($cart[$request->id]);
+    //             session()->put('cart', $cart);
+    //         }
+    //         session()->put('cart', $cart);
+    //         return redirect()->route('cart.index');
+    //     }
+    // }
     public function remove(Request $request)
     {
-        // dd(1111111111);
-        if ($request->id) {
+        if($request->id) {
             $cart = session()->get('cart');
-            if (isset($cart[$request->id])) {
+            if(isset($cart[$request->id])) {
                 unset($cart[$request->id]);
                 session()->put('cart', $cart);
             }
-            session()->put('cart', $cart);
-            return redirect()->route('cart.index');
         }
     }
 

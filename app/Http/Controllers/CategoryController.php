@@ -8,12 +8,23 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
         $this->authorize('viewAny', Category::class);
-        $Categories = Category::orderBy('id', 'DESC')->get();
-        // dd($Categories);
-        return view('admin.categories.index', compact('Categories'));
+        $key = $request->key??'';
+        $query = Category::query(true);
+        if ($key) {
+            $query->orWhere('id', $key)->where('deleted_at', '=', null);
+            $query->orWhere('name', 'LIKE', '%' . $key . '%')->where('deleted_at', '=', null);
+            // $query->orWhere('email', 'LIKE', '%' . $key . '%')->where('deleted_at', '=', null);
+        }
+        $Categories = $query->orderBy('id', 'DESC')->where('deleted_at', '=', null)->paginate(5);
+        $params = [
+            'f_key'          => $key,
+            'Categories' =>$Categories
+        ];
+        // dd($Categories);Category::orderBy('id', 'DESC')->get()
+        return view('admin.categories.index', $params);
 
     }
     public function create()

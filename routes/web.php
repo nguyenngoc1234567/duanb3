@@ -96,13 +96,15 @@ Route::prefix('shop1')->group(function () {
     Route::get('/showProduct/{id}', [ShopController::class, 'show'])->name('shop.showProduct');
     Route::get('/store/{id}', [ShopController::class, 'store'])->name('shop.store');
     Route::get('/cart', [ShopController::class, 'Cart'])->name('cart.index');
-    Route::get('/remove-from-cart/{id}', [ShopController::class, 'remove'])->name('remove.from.cart');
+    // Route::delete('/remove-from-cart/{id}', [ShopController::class, 'remove'])->name('shop.remove.from.cart');
     Route::get('/checkOuts', [ShopController::class, 'checkOuts'])->name('checkOuts');
     Route::get('/login', [ShopController::class, 'indexlogin'])->name('login.index');
     Route::post('/checkregister', [ShopController::class, 'checkregister'])->name('shop.checkregister');
     Route::get('/register', [ShopController::class, 'register'])->name('shop.register');
     Route::post('/checklogin', [ShopController::class, 'checklogin'])->name('shop.checklogin');
     Route::post('/order', [ShopController::class, 'order'])->name('order');
-    Route::delete('/remove-from-cart/{id}', [ShopController::class, 'remove'])->name('remove.from.cart');
+
+    Route::delete('remove-from-cart', [ShopController::class, 'remove']);
     Route::patch('update-cart', [ShopController::class, 'update']);
+
 });

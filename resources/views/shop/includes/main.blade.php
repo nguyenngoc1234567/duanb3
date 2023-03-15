@@ -13,7 +13,7 @@
 
                             <img width="300" height="300" src="{{ asset('public/assets/product/'. $product->image) }}" alt="">
                             <div class="product-hover">
-                                <a href="{{route('shop.store',$product->id)}}" id="{{ $product->id }}"class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Thêm giỏ hàng </a>
+                                {{-- <a href="{{route('shop.store',$product->id)}}" id="{{ $product->id }}"class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Thêm giỏ hàng </a> --}}
                                 <a href="{{ route('shop.showProduct' , $product->id) }}" class="view-details-link"><i class="fa fa-link"></i>Xem chi tiết </a>
                             </div>
                         </div>

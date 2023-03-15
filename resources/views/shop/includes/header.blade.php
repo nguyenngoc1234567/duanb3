@@ -29,7 +29,7 @@
             </div>
             <div class="col-sm-6">
                 <div class="shopping-item">
-                    <a href="{{route('cart.index')}}">Cart - <span class="cart-amunt">$300</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a>
+                    {{-- <a href="{{route('cart.index')}}">Cart - <span class="cart-amunt">$300</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a> --}}
                 </div>
             </div>
         </div>
@@ -48,10 +48,10 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href= "{{route('shop.index')}}">Trang  chủ</a></li>
-                    <li><a href="cart.html">Giỏ hàng </a></li>
+                    <li class="active"><a href= "{{route('shop.index')}}">Trangchủ</a></li>
+                    <li><a href="{{route('cart.index')}}">Giỏ hàng </a></li>
                     <li><a href="checkout.html">Thanh toán</a></li>
-                    <li><a href="#">Liên hệ </a></li>
+                    <li><a href="">Liên hệ </a></li>
 
                 </ul>
 

@@ -166,6 +166,7 @@
                  <div class="input-form">
                      <span>Email</span>
                      <input type="text" name="email">
+
                  </div>
                  <div class="input-form">
                      <span>Password</span>
